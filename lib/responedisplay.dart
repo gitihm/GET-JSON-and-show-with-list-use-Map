@@ -23,9 +23,9 @@ class ResponseDisplay extends StatelessWidget {
                             store.getResponseJson()[index]['store_image']),
                       ),
                       title: Text(
-                        //store.getResponseJson()[index]["store_name_th"],
-                        'jjjjj'
+                        store.getResponseJson()[index]["store_name_th"],
                       ),
+                     
                     );
                   },
                 )

@@ -7,7 +7,7 @@ class Store with ChangeNotifier {
    String _dataUrl = "";
 
   String _displayText = "";
-  Map<String , dynamic> _jsonResonse ;
+  var _jsonResonse ;
   bool _isFetching = false;
 
   void setDisplayText(String text) {
@@ -30,8 +30,10 @@ class Store with ChangeNotifier {
       print('res');
       print(response.statusCode);
       if (response.statusCode == 200) {
+        print(response.body.runtimeType);
         
-        _jsonResonse = json.decode(response.body);
+        _jsonResonse = json.decode(utf8.decode(response.bodyBytes));
+        
       }
 
       _isFetching = false;
@@ -43,14 +45,14 @@ class Store with ChangeNotifier {
     
   }
 
-  Map<String , dynamic> get getResponseText => _jsonResonse;
+   get getResponseText => _jsonResonse;
 
-   Map<String , dynamic> getResponseJson() {
+   getResponseJson() {
      print('cccc');
-    //if (_jsonResonse.isNotEmpty) {
+    if (_jsonResonse!='') {
       return _jsonResonse;
-    //}
-    //return null;
+    }
+    return null;
   }
 
  
